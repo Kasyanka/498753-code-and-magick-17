@@ -27,7 +27,6 @@ window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X, CLOUD_Y, 'wheat'); // облако
 
 
-
   ctx.fillStyle = 'rgba(255, 0, 0, 1)';
   var maxTime = getMaxElement(times);
 
