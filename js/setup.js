@@ -14,8 +14,6 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
     .content
     .querySelector('.setup-similar-item');
 
-
-
 var generates = function (array) {
   var fof = Math.floor(Math.random() * array.length);
   var zoz = array[fof];
