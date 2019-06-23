@@ -18,12 +18,20 @@ var generates = function (array) {
   return variableArray;
 };
 
-var getRandomElement = function (array) {
-  var element = generates(array);
-  var index = array.indexOf(element);
-  array.splice(index, 1);
+// неповторяющиеся элементы из цыкла
+// var getRandomElement = function (array) {
+// var element = generates(array);
+// var index = array.indexOf(element);
+// array.splice(index, 1);
+// return element;
+// };
+
+var getNextElement = function (array) {
+  var element = array.shift();
+  array.push(element);
   return element;
 };
+
 
 var wizards = [];
 
@@ -54,15 +62,19 @@ var setupOpen = document.querySelector('.setup-open');
 var setup = document.querySelector('.setup');
 var setupClose = setup.querySelector('.setup-close');
 
+
 var onPopupEscPress = function (evt) {
-  if (evt.keyCode === ESC_KEYCODE) {
+
+  if (evt.keyCode === ESC_KEYCODE && evt.target.getAttribute('name') !== 'username') {
     closePopup();
   }
+
 };
 
 var openPopup = function () {
   setup.classList.remove('hidden');
   document.addEventListener('keydown', onPopupEscPress);
+
 };
 
 var closePopup = function () {
@@ -90,16 +102,19 @@ setupClose.addEventListener('keydown', function (evt) {
   }
 });
 
-var coat = document.querySelector('.wizard-coat');
-var eyes = document.querySelector('.wizard-eyes');
+var coat = document.querySelector('.setup-wizard .wizard-coat');
+var eyes = document.querySelector('.setup-wizard .wizard-eyes');
 var fireball = document.querySelector('.setup-fireball-wrap');
 
 coat.addEventListener('click', function () {
-  coat.style.fill = getRandomElement(WIZARD_COAT);
+  coat.style.fill = getNextElement(WIZARD_COAT);
+  document.querySelector('[name="coat-color"]').value = coat.style.fill;
 });
 eyes.addEventListener('click', function () {
-  eyes.style.fill = getRandomElement(WIZARD_EYES);
+  eyes.style.fill = getNextElement(WIZARD_EYES);
+  document.querySelector('[name="eyes-color"]').value = eyes.style.fill;
 });
 fireball.addEventListener('click', function () {
-  fireball.style.background = getRandomElement(WIZARD_FIREBALL);
+  fireball.style.backgroundColor = getNextElement(WIZARD_FIREBALL);
+  document.querySelector('[name="fireball-color"]').value = fireball.style.backgroundColor;
 });
