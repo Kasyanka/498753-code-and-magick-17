@@ -55,8 +55,7 @@
   });
 
   setupClose.addEventListener('click', function () {
-    setupDialogElement.style.top = 50 + 'px';
-    setupDialogElement.style.left = 500 + 'px';
+    setupDialogElement.removeAttribute('style');
   });
 
 })();

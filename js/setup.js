@@ -18,14 +18,6 @@ var generates = function (array) {
   return variableArray;
 };
 
-// неповторяющиеся элементы из цыкла
-// var getRandomElement = function (array) {
-// var element = generates(array);
-// var index = array.indexOf(element);
-// array.splice(index, 1);
-// return element;
-// };
-
 var getNextElement = function (array) {
   var element = array.shift();
   array.push(element);
