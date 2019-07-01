@@ -7,7 +7,7 @@
   var setupOpen = document.querySelector('.setup-open');
   var setup = document.querySelector('.setup');
   var setupClose = setup.querySelector('.setup-close');
-
+  var form = setup.querySelector('.setup-wizard-form');
 
   var onPopupEscPress = function (evt) {
 
@@ -20,7 +20,7 @@
   var openPopup = function () {
     setup.classList.remove('hidden');
     document.addEventListener('keydown', onPopupEscPress);
-
+    form.addEventListener('submit', onSubmitForm);
   };
 
   var closePopup = function () {
@@ -47,4 +47,13 @@
       closePopup();
     }
   });
+
+  // событие - отправка формы на сервер
+  var onSubmitForm = function (evt) {
+    evt.preventDefault();
+    window.backend.save(new FormData(form), function () {
+      setup.classList.add('hidden');
+    });
+    form.removeEventListener('submit', onSubmitForm);
+  };
 })();
