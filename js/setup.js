@@ -6,7 +6,6 @@
   var WIZARD_FIREBALL = ['#30a8ee', '#5ce6c0', '#e848d5', '#e6e848', '#ee4830'];
   document.querySelector('.setup-similar').classList.remove('hidden'); // появляются похожие маги 4 шт
   var userDialog = document.querySelector('.setup'); // попап - окно с магами
-  userDialog.classList.remove('hidden');
 
   var similarListElement = document.querySelector('.setup-similar-list'); // сюда будут вставляться маги 4 шт
   var similarWizardTemplate = document.querySelector('#similar-wizard-template') // темлейт магов
